@@ -1,0 +1,27 @@
+# Skip Nix/GitHub (HTTP 429). Prefer Coolify Build Pack = Dockerfile.
+
+[phases.setup]
+nixPkgs = []
+nixLibs = []
+nixOverlays = []
+aptPkgs = [
+  "curl",
+  "ca-certificates",
+  "git",
+  "python3",
+  "make",
+  "g++",
+]
+cmds = [
+  "curl -fsSL https://deb.nodesource.com/setup_22.x | bash -",
+  "apt-get install -y nodejs",
+]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm run start:prod"

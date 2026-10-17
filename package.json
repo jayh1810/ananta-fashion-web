@@ -1,0 +1,53 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4",
+    "ios_saf >= 16.4",
+    "not dead"
+  ],
+  "scripts": {
+    "dev": "node scripts/next-port.mjs dev 3000",
+    "build": "next build",
+    "start": "node scripts/next-port.mjs start 3000",
+    "start:prod": "node scripts/next-port.mjs start 3000",
+    "lint": "eslint",
+    "test:llms": "node --experimental-strip-types --test scripts/llms-format.test.mjs",
+    "test:seo": "tsx --test scripts/seo-schema.test.mjs scripts/seo-engine.test.mjs scripts/seo-http.test.mjs scripts/llms-format.test.mjs",
+    "audit:seo": "node scripts/seo-coverage-audit.mjs",
+    "audit:seo:full": "cd ../api && npm run audit:seo",
+    "audit:seo:live": "node scripts/seo-validate-production.mjs",
+    "audit:schema:live": "node scripts/validate-product-schema.mjs",
+    "audit:llms": "node scripts/llm-index-audit.mjs",
+    "audit:robots": "node scripts/verify-robots-crawl.mjs",
+    "audit:gsc": "node scripts/audit-gsc-indexing.mjs",
+    "audit:cwv": "node scripts/audit-cwv-ssr.mjs"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.25.0",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sharp": "^0.34.5",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "20.19.43",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.1",
+    "typescript": "5.9.3"
+  }
+}
